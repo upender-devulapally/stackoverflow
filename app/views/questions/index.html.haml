@@ -1,0 +1,27 @@
+:css
+  a{
+      text-decoration: none;
+  }
+
+.list-header
+  All Questions
+#question_list
+  #questions.questions
+    - if @questions.blank?
+      %i No Questions found....
+    - else
+      - @questions.each do |question|
+        #question.question
+          .question-content
+            %a.answers{:href => "#"}
+              %span.count= question.answers_count
+              %span.content Answers
+            %a.question-biglink{:href => question_path(question)}
+              %h3.question-title
+                = question.title
+              %p.question-description
+                %span.question-teaser
+                  \—
+                  \#{question.description.truncate(75)}
+%br/
+= link_to 'Ask Question', new_question_path

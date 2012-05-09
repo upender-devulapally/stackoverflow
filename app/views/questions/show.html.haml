@@ -1,0 +1,21 @@
+%h3.question_title{style: 'color: #4B7399;'}= @question.title
+%hr
+.question_description= @question.description
+.question_answers
+  %h3
+    %span#answers_count
+      = @question.answers_count
+    Answers
+  #answers
+    - if @question.answers_count > 0
+      -for answer in @question.answers
+        = render 'answer',:answer=>answer
+  %h3 Your Answer
+  .your_answer
+    = form_for(Answer.new,:url=> add_answer_question_path(@question),:remote=>true )do |f|
+      = f.text_area :description,:cols=>94,:rows=>4
+      = f.button :submit,:class=>'button primary' ,:disable_with=>'Adding..'
+
+
+
+

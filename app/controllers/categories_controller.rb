@@ -6,7 +6,11 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @categories }
+      format.json {
+        render json: @categories.as_json(root: true)
+        #user.as_json(root: true)
+        # => { "user": {"id": 1, "name": "Konata Izumi", "age": 16 }
+      }
     end
   end
 

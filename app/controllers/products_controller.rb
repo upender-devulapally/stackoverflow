@@ -9,7 +9,11 @@ class ProductsController < ApplicationController
     end
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @products }
+      format.json {
+        render json: @products.as_json(root: true)
+        #user.as_json(root: true)
+        # => { "user": {"id": 1, "name": "Konata Izumi", "age": 16 }
+      }
     end
   end
 

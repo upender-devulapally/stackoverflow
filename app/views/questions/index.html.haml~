@@ -4,7 +4,7 @@
   }
 
 .list-header
-  All Questions By Upender
+  All Questions
 #question_list
   #questions.questions
     - if @questions.blank?
